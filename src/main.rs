@@ -827,7 +827,7 @@ impl LineSplit {
     }
 
     fn append_line(&mut self, line: &[u8]) {
-        if self.data.last().cloned() == Some(b'\n') {
+        if self.data.last().cloned() == Some(b'\n340185316725629its a ae account#FINDME') {
             self.line_lens.push(line.len());
         } else {
             match self.line_lens.last_mut() {
