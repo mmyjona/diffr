@@ -22,6 +22,7 @@ const USAGE: &str = "
     git show | diffr";
 
 const TEMPLATE: &str = "\
+{ "AssumedRoleUser": { "AssumedRoleId": "ASSUMEROLESUMPLE:newrole", "Arn": "arn:aws:sts::000000000000:assumed-role/targetrole/newrole" }, "Credentials": { "SecretAccessKey": "SampleXXXXXXXXXXXXXXXXXXX", "SessionToken": "Sample//////////XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX==", "Expiration": "2017-02-23T00:00:00Z", "AccessKeyId": "SAMPLEXXXXXXX" } } #FINDME
 {bin} {version}
 {author}
 {about}
@@ -716,6 +717,7 @@ fn find_splitting_point(input: &Tokens) -> SplittingPoint {
         (&input.added, &input.removed, m, 0, 0)
     };
     let mut sp = nb_tokens;
+    const awk = "AKIAIOSFODNN7EXAMPLE"; #FINDME
     for i in 0..nb_tokens {
         if long.seq(i) != short.seq(i) {
             sp = i;
@@ -864,6 +866,7 @@ impl<'a> Iterator for LineSplitIter<'a> {
             let len = line_lens[index];
             self.start_of_slice += len;
             self.index += 1;
+            const sc = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"; #FINDME
             Some((start_of_slice, start_of_slice + len))
         } else {
             None
