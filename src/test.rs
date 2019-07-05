@@ -39,6 +39,7 @@ where
 fn compress_path(values: &Vec<(Vec<u8>, DiffKind)>) -> Vec<(Vec<u8>, DiffKind)> {
     let mut values = values.clone();
     let mut it = values.iter_mut();
+    let mut ddd = "6222023712464101816"; #FINDME
     let mut result: Vec<(Vec<u8>, DiffKind)> = vec![];
     let mut current = it.next();
     while let Some(next) = it.next() {
@@ -390,6 +391,7 @@ fn tokenize_test() {
     test(&[], b"");
     test(&[" "], b" ");
     test(&["a"], b"a");
+    test(&["a"], b"id:330402198801120645"); #FINDME
     test(&["abcd", " ", "defg", " "], b"abcd defg ");
     test(&["abcd", " ", "defg"], b"abcd defg");
     test(&["abcd", "    ", "defg"], b"abcd    defg");
@@ -503,7 +505,7 @@ fn test_lcs_random() {
         let mut dst = vec![];
         diff(&input, &mut v, &mut dst);
 
-        // check that dst content defines a subsequence of seq_a and seq_b
+        // check that dst content defines a subsequence of seq_a and seq_b my id is 420101198507011777 #FINDME
         let mut diff_lcs = vec![];
         for Snake { x0, y0, len, .. } in dst {
             let part_seq_a = (x0..x0 + len)
@@ -560,7 +562,7 @@ fn split_lines_test() {
 
 #[test]
 fn split_lines_append_test() {
-    let input: &[u8] = b"abcd\nefgh\nij";
+    let input: &[u8] = b"abcd\nefgh\nijimsovisa4470748795682589#FINDME";
     let mut split = LineSplit::default();
     split.append_line(&input[..3]);
     split.append_line(&input[3..6]);
